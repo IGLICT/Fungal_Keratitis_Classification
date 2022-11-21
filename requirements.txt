@@ -1,0 +1,13 @@
+torch==1.9.0
+numpy
+glob
+natsort
+pillow
+tqdm
+pytorch_lightning==1.5.10
+pandas
+torchmetrics==0.7.2
+seaborn==0.11.2
+matplotlib
+timm==0.5.4
+scikit-learn
