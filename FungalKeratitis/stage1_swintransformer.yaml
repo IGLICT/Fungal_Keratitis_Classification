@@ -1,0 +1,49 @@
+General: 
+  exp_name: 'SwinTransformer_valtest_stage1_exp1'
+  seed: 1000
+  fp16: False
+  amp_level: O2
+  precision: 16
+  strategy: ddp2 
+  replace_sampler_ddp: False
+  gpus: [0]
+  epochs: 100
+  grad_acc: 1
+  frozen_bn: False
+  patience: 10
+  log_path: './logs'
+  result_path: './results'
+
+Data:
+  dataset_name: 'stage_dataset'
+  stage_num: 1
+  data_shuffle: False
+  data_dir: './Data'
+  oversample: True
+  data_augmentation: True
+  imgsize: 224
+  fold: 0
+  train_dataloader: 
+    batch_size: 32
+    num_workers: 8
+  test_dataloader:
+    batch_size: 32
+    num_workers: 8
+
+Model:
+  net_name: 'TimmModel'
+  model_name: 'swin_base_patch4_window7_224'
+  in_chans: 1
+  n_classes: 2
+
+Optimizer:
+  opt: 'SGD'
+  lr: 0.001
+  momentum: 0.9
+  weight_decay: 0.001
+  lr_scheduler: step
+  lr_decay_every: 5000
+  lr_decay_by: 0.9
+
+Loss:
+  base_loss: 'CrossEntropyLoss'
